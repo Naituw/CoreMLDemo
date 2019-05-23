@@ -31,14 +31,14 @@
 {
     UIBezierPath * path = [[UIBezierPath alloc] init];
     
-    const vector_float2 * points = faceRegion.points;
+    const CGPoint * points = faceRegion.normalizedPoints;
     NSUInteger pointCount = faceRegion.pointCount;
     
     BOOL first = YES;
     
     for (NSUInteger i = 0; i < pointCount; i++) {
-        vector_float2 vector = points[i];
-        CGPoint point = CGPointMake(vector[0], vector[1]);
+        CGPoint vector = points[i];
+        CGPoint point = CGPointMake(vector.x, vector.y);
         
         point.x *= boundingBox.size.width;
         point.y *= boundingBox.size.height;
